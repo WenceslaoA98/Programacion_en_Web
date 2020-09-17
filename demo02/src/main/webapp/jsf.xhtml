@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head></h:head>
+<body>
+	<h:form>
+		<p:commandButton value="Nuevo"
+			action="#{laboratoryController.newLaboratory()}" />
+		<p:dataTable id="lstLaboratories" var="la"
+			value="#{laboratoryController.listLaboratories}" paginator="true"
+			paginatorPosition="top" rowsPerPageTemplate="10,20,30,40,50"
+			rows="10" emptyMessage="No existen registros">
+			<p:column headerText="Código" sortBy="#{la.idLaboratory}">
+				<h:outputText value="#{la.idLaboratory}" />
+			</p:column>
+			<p:column headerText="Laboratorio" sortBy="#{la.nameLaboratory}">
+				<h:outputText value="#{la.nameLaboratory}" />
+			</p:column>
+			<p:column headerText="Dirección" sortBy="#{la.adressLaboratory}">
+				<h:outputText value="#{la.adressLaboratory}" />
+			</p:column>
+			<p:column headerText="Fecha de Creación "
+				sortBy="#{la.birthdateLaboratory}">
+				<h:outputText value="#{la.birthdateLaboratory}">
+					<f:convertDateTime pattern="dd-MM-yyyy" timeZone="UTC" />
+				</h:outputText>
+			</p:column>
+		</p:dataTable>
+	</h:form>
+</body>
+</html>

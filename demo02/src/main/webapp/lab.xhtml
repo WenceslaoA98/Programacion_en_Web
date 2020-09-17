@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head></h:head>
+<body>
+	<h:form>
+		<h:outputLabel for="id" value="id" />
+		<p:inputText id="id" value="#{laboratoryController.l.idLaboratory}"
+			maxlength="30" required="true" />
+		<h:outputLabel for="name" value="Laboratorio" />
+
+		<p:inputText autocomplete="off" id="name"
+			value="#{laboratoryController.l.nameLaboratory}" maxlength="30"
+			required="true" />
+		<h:outputLabel for="adress" value="Dirección:" />
+		<p:inputText id="adress"
+			value="#{laboratoryController.l.adressLaboratory}" maxlength="30"
+			required="true" />
+		<h:outputLabel for="date" value="Fecha de creación " />
+		<p:calendar id="date" pattern="dd/MM/yyyy"
+			value="#{laboratoryController.l.birthdateLaboratory}" showOn="button" 
+			required="true">
+		</p:calendar>
+		<br />
+		<p:commandButton value="Grabar"
+			actionListener="#{laboratoryController.insert()}" 
+			action="jsf?faces-redirect=true" />
+		<p:commandButton value="Cancelar"
+			action="listLaboratory?faces-redirect=true"   immediate="true"/>
+	</h:form>
+</body>
+</html>

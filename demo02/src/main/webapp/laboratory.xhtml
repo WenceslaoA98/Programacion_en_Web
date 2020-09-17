@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="master.xhtml">
+
+	<ui:define name="title">
+        .:Registro de Laboratorio:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>Laboratorio</span>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<h:form>
+			<h:outputLabel for="id" value="id" styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="id" styleClass="form-control"
+				value="#{laboratoryController.l.idLaboratory}" maxlength="30"
+				required="true" />
+			<h:outputLabel for="name" value="Laboratorio"
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="name" styleClass="form-control"
+				value="#{laboratoryController.l.nameLaboratory}" maxlength="30"
+				required="true" />
+
+			<h:outputLabel for="adress" value="Dirección:"
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="adress" styleClass="form-control"
+				value="#{laboratoryController.l.adressLaboratory}" maxlength="30"
+				required="true" />
+
+			<h:outputLabel for="date" value="Fecha de creación "
+				styleClass="control-label" />
+
+			<p:calendar id="date" pattern="dd/MM/yyyy"
+				value="#{laboratoryController.l.birthdateLaboratory}"
+				showOn="button" timeZone="UTC" required="true">
+			</p:calendar>
+			<br />
+
+
+			<p:commandButton value="Grabar"
+				actionListener="#{laboratoryController.insert()}"
+				styleClass="btn btn-danger" update="@form"
+				action="listLaboratory?faces-redirect=true" />
+			<p:commandButton value="Cancelar"
+				action="listLaboratory?faces-redirect=true" immediate="true"
+				styleClass="btn btn-default" ajax="false" />
+
+
+		</h:form>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition>
+</html>
